@@ -1,0 +1,14 @@
+{
+  "name": "preentrega2-fortini",
+  "version": "1.0.0",
+  "description": "backend1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roman Fortini",
+  "license": "ISC",
+  "dependencies": {
+    "node.js": "^0.0.1-security"
+  }
+}
