@@ -12,8 +12,10 @@
   "author": "Roman Fortini",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
     "express": "^5.2.1",
     "node.js": "^0.0.1-security",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "tailwindcss": "^4.2.1"
   }
 }
