@@ -8,3 +8,6 @@ Ya que la conexión entre una consulta HTTP y websocket no está contemplada den
 Si se desea hacer la conexión de socket emits con HTTP, deberás buscar la forma de utilizar el servidor io de Sockets dentro de la petición POST. ¿Cómo utilizarás un emit dentro del POST?
 
 handlebars entra también
+
+Ejecución tailwind
+npx @tailwindcss/cli -i ./public/css/style.css -o ./public/css/output.css --watch

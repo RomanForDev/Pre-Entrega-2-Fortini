@@ -5,11 +5,13 @@ import path from 'path';
 
 const app = express();
 const PORT = 8080;
-app.use(express.json());
+// app.use(express.json());
 
-app.use('/home', (req, res) => {
-    res.send('Bienvenido!')
-}) //Acá hay que poner handlebars seguramente.
+app.use('/home', express.static('public'));
+
+// app.use('/home', (req, res) => {
+//     res.render('./src/public/index.html')
+// }) //Acá hay que poner handlebars seguramente.
 
 app.use('/api/products', productsRouter);
 
