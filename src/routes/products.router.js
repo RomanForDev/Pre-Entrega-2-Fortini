@@ -1,16 +1,22 @@
 import express from 'express';
+import { getDB } from '../db/mongo.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Hola');
+const coleccion = () => getDB().collection('products');
+
+router.get('/', async (req, res) => {
+    const productos = await coleccion().find().toArray();
+    console.log('Productos en la base de datos:', productos);
+    res.send(productos);
 })
 
-// router.get('/:id', (req, res) => {
-//     const { id } = req.params;
-//     const producto = data.find(item => item.id == id);
-//     res.json(producto);
-// })
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    const productos = await coleccion().find().toArray();
+    const producto = productos.find(item => item._id == id);
+    res.json(producto);
+})
 
 // // Agregar un producto.
 
