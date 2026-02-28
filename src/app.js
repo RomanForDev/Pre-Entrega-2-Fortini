@@ -3,20 +3,28 @@ import productsRouter from './routes/products.router.js';
 import cartRouter from './routes/cart.router.js';
 import path from 'path';
 import handlebars from 'express-handlebars';
+import __dirname from './utils/dirname.js'
 
 const app = express();
 const PORT = 8080;
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '..', '..', 'public'))); //Esto se necesita porque la carpeta public esta por fuera de src!
 
-app.use('/home', express.static('public'));
+///Configuración handlebars////
 
-// app.use('/home', (req, res) => {
-//     res.render('./src/public/index.html')
-// }) //Acá hay que poner handlebars seguramente.
-
-app.engine('handlebars', handlebars.engine());
-app.set('views', '/views');
 app.set('view engine', 'handlebars');
+app.engine('handlebars', handlebars.engine());
+app.set('views', path.join(__dirname, '..', 'views'));
+
+// app.use('/home', express.static('public'));
+app.use('/home', (req, res) => {
+    let data = {
+        message: 'Bienvenido!',
+        title: "Bienvenidos"
+    }
+    res.render('index', data)
+});
+
 
 app.use('/api/products', productsRouter);
 
