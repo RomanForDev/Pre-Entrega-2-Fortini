@@ -5,6 +5,7 @@ import path from 'path';
 import handlebars from 'express-handlebars';
 import __dirname from './utils/dirname.js'
 import { connectMongo, getDB } from './db/mongo.js';
+import { Server } from 'socket.io'; 
 
 const app = express();
 const PORT = 8080;
@@ -39,6 +40,12 @@ app.use('/api/products', productsRouter);
 app.use('/api/cart', cartRouter);
 
 ///////////////////////////////////////////////////////////////
-app.listen(PORT, () => {
+const httpServer = app.listen(PORT, () => {
     console.log(`Puerto iniciado en ${PORT}`);
 })
+
+const io = new Server(httpServer);
+
+io.on('connection', socket => {
+    console.log('Nuevo cliente conectado con el id' + socket.id);
+});
