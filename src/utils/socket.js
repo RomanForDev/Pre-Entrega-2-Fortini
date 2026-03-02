@@ -1,1 +1,2 @@
-console.log('Servidor iniciado con Socket.Io');
+const socket = io();
+console.log('Cliente conectado al servidor Socket');

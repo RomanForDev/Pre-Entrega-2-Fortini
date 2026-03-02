@@ -47,5 +47,5 @@ const httpServer = app.listen(PORT, () => {
 const io = new Server(httpServer);
 
 io.on('connection', socket => {
-    console.log('Nuevo cliente conectado con el id' + socket.id);
+    console.log('Nuevo cliente conectado con el id ' + socket.id);
 });

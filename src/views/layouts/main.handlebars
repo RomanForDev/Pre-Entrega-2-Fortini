@@ -6,7 +6,20 @@
     <link rel="stylesheet" href="/css/output.css">
     <title>{{title}}</title>
 </head>
+    <nav class="bg-blue-400 shadow-xl/20 p-2">
+        <section class="flex flex-row justify-between gap-2">
+            <a href="/home"><img src="/img/office.png" alt="" class="size-15"></a>
+            <li class="flex flex-row place-items-center gap-4">
+                <a href=""><button><ul class="transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110">About</ul></button></a>
+                <a href="/api/products"><button><ul class="transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110">Productos</ul></button></a>
+                <a href=""><button><ul class="transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110">Contacto</ul></button></a>
+            </li>
+        </section>
+    </nav>
 <body class="font-sans font-medium text-shadow-lg text-base">
     {{{ body }}}
 </body>
+<footer class="flex justify-center place-items-center bg-blue-400 h-16">
+    <p>Todos los derechos reservados</p>
+</footer>
 </html>

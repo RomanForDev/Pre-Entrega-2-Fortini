@@ -1,5 +1,6 @@
 import express from 'express';
 import { getDB } from '../db/mongo.js';
+import { productManager } from '../utils/productManager.js';
 
 const router = express.Router();
 
@@ -7,8 +8,13 @@ const coleccion = () => getDB().collection('products');
 
 router.get('/', async (req, res) => {
     const productos = await coleccion().find().toArray();
-    console.log('Productos en la base de datos:', productos);
-    res.send(productos);
+    let element = productManager(productos)
+    let data = {
+        message: 'Productos!',
+        db: element
+    }
+    console.log(data);
+    res.render('realTimeProducts', data);
 })
 
 router.get('/:id', async (req, res) => {
