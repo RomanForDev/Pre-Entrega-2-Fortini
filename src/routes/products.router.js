@@ -13,7 +13,6 @@ router.get('/', async (req, res) => {
         message: 'Productos!',
         db: element
     }
-    console.log(data);
     res.render('realTimeProducts', data);
 })
 
@@ -21,7 +20,7 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const productos = await coleccion().find().toArray();
     const producto = productos.find(item => item._id == id);
-    res.json(producto);
+    res.render('realTimeSingleProduct', producto);
 })
 
 // // Agregar un producto.
