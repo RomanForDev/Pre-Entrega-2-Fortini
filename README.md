@@ -15,6 +15,7 @@ npm i :
     nodemon
     tailwindcss @tailwindcss/cli
     socket.io
+    mongoose
 ```
 
 RESTA:
@@ -22,7 +23,7 @@ RESTA:
 - Vistas de cards para products
 - Vista de cart
 - Estilos para products y cart
-- CRUD con mongo
+- Conectar a mongodbAtlas.
 
 Ejecutar tailwind cli:
 npx @tailwindcss/cli -i ./public/css/style.css -o ./public/css/output.css --watch
