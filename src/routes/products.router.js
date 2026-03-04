@@ -3,6 +3,8 @@ import { getDB } from '../db/mongo.js';
 import { productManager } from '../utils/productManager.js';
 
 const router = express.Router();
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }))
 
 const coleccion = () => getDB().collection('products');
 
@@ -22,6 +24,15 @@ router.get('/:id', async (req, res) => {
     const producto = productos.find(item => item._id == id);
     res.render('realTimeSingleProduct', producto);
 })
+
+// Pensar!
+// router.post('/', async (req, res) => {
+//     const {name, price, status, quantity} = req.body;
+//     const productos = await coleccion().find().toArray();
+//     const productoNuevo = {name, price, status, quantity}
+//     db.productos.createOne(productoNuevo);
+//     res.render('realTimeSingleProduct', producto);
+// })
 
 // // Agregar un producto.
 
