@@ -16,6 +16,7 @@
     "express": "^5.2.1",
     "express-handlebars": "^8.0.3",
     "mongodb": "^7.1.0",
+    "mongoose": "^9.2.3",
     "node.js": "^0.0.1-security",
     "nodemon": "^3.1.14",
     "socket.io": "^4.8.3",
