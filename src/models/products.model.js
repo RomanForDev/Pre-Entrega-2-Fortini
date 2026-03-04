@@ -3,11 +3,6 @@ import mongoose from "mongoose";
 const productCollection = 'products';
 
 const productSchema = new mongoose.Schema({
-    _id: {
-        type: String, 
-        required: true, 
-        unique: true
-    },
     name: {
         type: String, 
         required: true, 
