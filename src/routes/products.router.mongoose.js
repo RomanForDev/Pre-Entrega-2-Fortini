@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
             db: element
         }
         res.render('realTimeProducts', data);
+        res.json({status: 'success', payload: productos});
     } catch (error) {
         console.log(error) 
         res.status(500).json({status: 'error', msg:'Se ha producido un error al recuperar los datos de Productos.'});
@@ -34,7 +35,8 @@ router.get('/:id', async (req, res) => {
             name: producto.name,
             price: producto.price
         }
-        res.render('realTimeSingleProduct', data)
+        res.render('realTimeSingleProduct', data);
+        res.json({status: 'success', payload: producto})
     } catch (error) {
         res.status(500).json({status: 'Error', msg: 'No se encontró el id solicitado.'});
         console.log(error);
@@ -58,10 +60,8 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const productos = await productModel.find();
         const productoEliminado = await productModel.findByIdAndDelete(id);
         res.json({status: "success", payload: `Eliminado el producto ${productoEliminado.name}`})
-        res.render('realTimeProducts', productos) //No haría falta rerenderizar en caso de usar websockets.
     } catch (error) {
         res.status(500).json({status: 'Error', msg: 'Error del servidor al eliminar el producto.'})
         console.log(error);
