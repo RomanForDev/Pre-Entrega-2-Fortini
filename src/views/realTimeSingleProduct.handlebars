@@ -2,9 +2,27 @@
         <h1 class="text-5xl flex justify-center">{{ message }}</h1>
     </section>
 
-    <section>
+    {{!-- <section>
         <li>Nombre: {{name}}</li>
         <li>Precio: {{price}}</li>
         <hr>
+    </section> --}}
+    <section class="flex flex-row justify-center">
+    <div class="bg-neutral-primary-soft block min-w-4xl border border-default rounded-3xl shadow-xs justify-items-center">
+        <img class="rounded-t-base" src={{this.image}} alt="" />
+        <div class="p-6 text-center">
+        </span>
+            <h5 class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading">Nombre: {{this.name}}</h5>
+            <h5 class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading">Precio: {{this.price}}</h5>
+            <h5 class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading">Descripción: {{this.description}}</h5>
+            <h5 class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading">Id: {{this.id}}</h5>
+        <div class="flex flex-row gap-1.5 justify-center">
+        <a href="#" class="inline-flex items-center text-white bg-brand bg-blue-500 box-border border border-transparent rounded-3xl hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+            Agregar al Carrito
+            <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+        </a>
+        </div>
+    </div>
+    </div>
     </section>
     <script type="/text/javascript" src=""></script>

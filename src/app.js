@@ -11,7 +11,7 @@ import { Server } from 'socket.io';
 
 import mongoose from 'mongoose';
 import productsRouterMongoose from './routes/products.router.mongoose.js';
-const URI_DB_MONGOOSE = "mongodb+srv://romanfortinidev_db_user:RomanCoder2026@cluster0.b4zrrki.mongodb.net/81295?appName=Cluster0";
+const URI_DB_MONGOOSE = "";
 mongoose.connect(URI_DB_MONGOOSE).then(() => {
     console.log('Conectado con éxito a MongoDBAtlas.');   
 }).catch(error => {
