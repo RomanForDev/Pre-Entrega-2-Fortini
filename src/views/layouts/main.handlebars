@@ -18,6 +18,18 @@
     </nav>
 <body class="font-sans font-medium text-shadow-lg text-base">
     {{{ body }}}
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    const socket = io();
+
+    socket.on('connect', () => {
+        console.log('Conectado al servidor con id', socket.id);
+    });
+
+    socket.on('productsUpdated', data => {
+        console.log('Productos actualizados:', data);
+    });
+    </script>
 </body>
 <footer class="flex justify-center place-items-center bg-blue-400 h-16">
     <p>Todos los derechos reservados</p>

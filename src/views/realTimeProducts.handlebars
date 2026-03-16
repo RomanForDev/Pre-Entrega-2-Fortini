@@ -2,12 +2,30 @@
         <h1 class="text-5xl flex justify-center">{{ message }}</h1>
     </section>
 
-    <section>
+    <section id="lista-productos">
     {{#each db}}
         <li>Nombre: {{this.name}}</li>
         <li>Precio: {{this.price}}</li>
         <li>ID: {{this.id}}</li>
         <hr>
     {{/each}}
-    </section>
+    </section>    
+</section>
     <script type="/text/javascript" src=""></script>
+    <script src="/socket.io/socket.io.js"></script>
+    {{!-- <script>
+    const lista = document.getElementById('lista-productos');
+    // Reutiliza el mismo socket creado en main.handlebars
+    const socket = io();
+    socket.on('productsUpdated', (producto) => {
+    // ejemplo para alta/modificación: agrego al final
+    const div = document.createElement('div');
+    div.className = 'producto';
+    div.innerHTML = `
+        <span class="nombre">${producto.name}</span>
+        <span class="precio">${producto.price}</span>
+        <span class="precio">${producto.description}</span>
+    `;
+    lista.appendChild(div);
+    }); --}}
+    </script>

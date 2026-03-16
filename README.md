@@ -1,3 +1,7 @@
+Correcciones entrega 2:
+
+1.  Endpoints: Se solicitaba que la vista de tiempo real viviera en /realtimeproducts, pero la recibí renderizada en el GET de /api/products. Si bien el contenido de la lista está bien armado, es importante respetar la estructura de rutas solicitada o separar las vistas de la lógica de la API. 2. Lógica de Sockets: Te falta emitir el evento desde el router (puedes pasar io por req.app.get('socketio') si lo seteas en app.js) y, del lado del cliente, usar un script en el .handlebars que escuche ese evento y modifique el DOM. Para esta etapa final, el foco principal era la implementación de Websockets. En tu proyecto, aunque el servidor de sockets está iniciado, no existe una comunicación real entre el servidor y el cliente. Al crear o eliminar un producto, la vista no se actualiza automáticamente, que es el corazón de la consigna. Espero que esta corrección te sea útil. No dudes en consultar si tienes alguna duda. ¡Saludos!
+
 Entrega Final
 Objetivos generales
 

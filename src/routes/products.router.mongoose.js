@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
             db: element
         }
         res.render('realTimeProducts', data);
-        res.json({status: 'success', payload: productos});
+        // res.json({status: 'success', payload: productos});
     } catch (error) {
         console.log(error) 
         res.status(500).json({status: 'error', msg:'Se ha producido un error al recuperar los datos de Productos.'});
@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
             price: producto.price
         }
         res.render('realTimeSingleProduct', data);
-        res.json({status: 'success', payload: producto})
+        // res.json({status: 'success', payload: producto})
     } catch (error) {
         res.status(500).json({status: 'Error', msg: 'No se encontró el id solicitado.'});
         console.log(error);
@@ -48,7 +48,13 @@ router.post('/', async (req, res) => {
     try {
         const {name, price, status, quantity, description} = req.body;
         const productoNuevo = await productModel.create({ name, price, status, quantity, description});
-        res.json({status: 'success', payload: productoNuevo})
+        // res.json({status: 'success', payload: productoNuevo})
+        const io = req.app.get('io');
+        if (io) io.emit('productsUpdated', productoNuevo)
+        return res.status(200).json({
+            status: "success",
+            payload: `Añadido el producto ${productoNuevo?.name ?? id}`
+        });
     } catch (error) {
         res.status(500).json({status: 'Error', msg: 'Error del servidor al crear el producto.'})
         console.log(error);
@@ -61,13 +67,17 @@ router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const productoEliminado = await productModel.findByIdAndDelete(id);
-        res.json({status: "success", payload: `Eliminado el producto ${productoEliminado.name}`})
+        const io = req.app.get('io');
+        if (io) io.emit('productsUpdated', productoEliminado);
+        return res.status(200).json({
+            status: "success",
+            payload: `Eliminado el producto ${productoEliminado?.name ?? id}`
+        });
     } catch (error) {
         res.status(500).json({status: 'Error', msg: 'Error del servidor al eliminar el producto.'})
         console.log(error);
     }
-    }
-)
+});
 
 // Modificar un producto.
 
@@ -75,8 +85,14 @@ router.put('/:id', async (req, res) => {
     const { id } = req.params;
     const {name, price, status, quantity, description} = req.body;
     try {
-        const productoModificado = await productModel.findByIdAndUpdate(id, {name, price, status, quantity, description}, { returnDocument: 'after' });
-        res.json({status: 'success', payload: `Modificado el objeto ${name}`})
+        const productoModificado = await productModel.findByIdAndUpdate(id, {name, price, status, quantity, description});
+        const io = req.app.get('io');
+        if (io) io.emit('productsUpdated', productoModificado);
+        return res.status(200).json({
+            status: "success",
+            payload: `Modificado el producto ${productoModificado?.name ?? id}`
+        });
+        // res.json({status: 'success', payload: `Modificado el objeto ${name}`})
     } catch (error) {
         res.status(500).json({status: 'Error', msg: 'Error del servidor al modificar el producto.'})
         console.log(error);
