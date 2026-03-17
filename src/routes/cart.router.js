@@ -14,7 +14,8 @@ router.post('/:id', (req,res) => {
 //Ver carrito en navegador.
 
 router.get('/', (req, res) => {
-    res.send(`<h3>Su carrito de Compras es : </h3>`)
+    // res.send(`<h3>Su carrito de Compras es : </h3>`)
+    res.render('cart');
 })
 
 export default router
