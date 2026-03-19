@@ -28,9 +28,9 @@ router.get('/', async (req, res) => {
 })
 
 
-router.post('/', async (req, res) => {
+router.post('/post', async (req, res) => {
     try {
-        const {name, price, status, quantity, description} = req.body;
+        const {name, price, quantity,} = req.body;
         const productoNuevo = await cartModel.create({ name, price, quantity });
         // res.json({status: 'success', payload: productoNuevo})
         const io = req.app.get('io');
