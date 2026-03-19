@@ -96,4 +96,16 @@ router.get('/nochoco', async (req, res) => {
     }
 })
 
+router.get('/minprice', async (req, res) => {
+    try {
+        const search = await productModel.aggregate([{
+            $sort: {price: -1}
+        }])
+        res.json({status: 'success', payload: search})
+    } catch (error) {
+        res.status(500).json({status: 'Error', msg: 'Error al encontrar los productos.'})
+        console.log(error);
+    }
+})
+
 export default router;
