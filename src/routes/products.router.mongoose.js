@@ -83,4 +83,17 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+router.get('/nochoco', async (req, res) => {
+    const nochoco = false;
+    try {
+        const search = await productModel.aggregate([{
+            $match: {status: nochoco}
+        }])
+        res.json({status: 'success', payload: search})
+    } catch (error) {
+        res.status(500).json({status: 'Error', msg: 'Error al encontrar los productos.'})
+        console.log(error);
+    }
+})
+
 export default router;
