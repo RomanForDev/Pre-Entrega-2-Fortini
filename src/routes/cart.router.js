@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
             message: 'Su carrito!',
             db: element
         }
-        // res.render('cart', data);
-        res.json({status: 'success', payload: productos});
+        res.render('cart', data);
+        // res.json({status: 'success', payload: productos});
     } catch (error) {
         console.log(error) 
         res.status(500).json({status: 'error', msg:'Se ha producido un error al recuperar los datos de Productos.'});

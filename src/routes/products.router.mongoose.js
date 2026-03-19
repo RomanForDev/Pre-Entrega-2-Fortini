@@ -22,25 +22,9 @@ router.get('/', async (req, res) => {
         res.render('realTimeProducts', data);
         // res.json({status: 'success', payload: productos});
     } catch (error) {
-        console.log(error) 
+        console.log(error)
         res.status(500).json({status: 'error', msg:'Se ha producido un error al recuperar los datos de Productos.'});
     }
-})
-
-router.get('/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const producto = await productModel.findById(id);
-        const data = {
-            name: producto.name,
-            price: producto.price
-        }
-        res.render('realTimeSingleProduct', data);
-        // res.json({status: 'success', payload: producto})
-    } catch (error) {
-        res.status(500).json({status: 'Error', msg: 'No se encontró el id solicitado.'});
-        console.log(error);
-    } 
 })
 
 // Agregar un producto.
