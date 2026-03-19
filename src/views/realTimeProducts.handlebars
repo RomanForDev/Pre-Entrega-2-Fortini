@@ -1,38 +1,6 @@
     <section>
         <h1 class="text-5xl flex justify-center">{{ message }}</h1>
     </section>
-
-    {{!-- <section id="lista-productos">
-            {{#each db}}
-            <div class="bg-neutral-primary-soft block max-w-sm border border-default rounded-base shadow-xs">
-                <div class="p-6 text-center">
-                <li>Nombre: {{this.name}}</li>
-                <li>Precio: {{this.price}}</li>
-                <li>ID: {{this.id}}</li>
-                <li>Descripción: {{this.description}}</li>
-                <hr>
-                </div>
-            </div>
-            {{/each}}
-    </section>    
-</section> --}}
-    <script type="/text/javascript" src=""></script>
-    <script src="/socket.io/socket.io.js"></script>
-    {{!-- <script>
-    const lista = document.getElementById('lista-productos');
-    // Reutiliza el mismo socket creado en main.handlebars
-    const socket = io();
-    socket.on('productsUpdated', (producto) => {
-    // ejemplo para alta/modificación: agrego al final
-    const div = document.createElement('div');
-    div.className = 'producto';
-    div.innerHTML = `
-        <span class="nombre">${producto.name}</span>
-        <span class="precio">${producto.price}</span>
-        <span class="precio">${producto.description}</span>
-    `;
-    lista.appendChild(div);
-    }); --}}
     </script>
     <section class="grid grid-cols-4 gap-1.5" id="lista-productos">
     {{#each db}}
@@ -45,7 +13,7 @@
             <h5 class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading">Descripción: {{this.description}}</h5>
             <h5 class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading">Id: {{this.id}}</h5>
         <div class="flex flex-row gap-1.5 justify-center">
-        <a href="/api/products/{{this.id}}" class="inline-flex items-center text-white bg-brand bg-blue-500 box-border border border-transparent rounded-3xl hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+        <a href="#" class="inline-flex items-center text-white bg-brand bg-blue-500 box-border border border-transparent rounded-3xl hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
             Detalle
         <a href="#" class="inline-flex items-center text-white bg-brand bg-blue-500 box-border border border-transparent rounded-3xl hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
             Agregar al Carrito
